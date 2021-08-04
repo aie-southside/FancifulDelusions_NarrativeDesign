@@ -9,6 +9,9 @@ public class RoomTimer : MonoBehaviour
     public GameObject[] ObjectsToDeactivateR;  
     public GameObject[] ObjectsToActivateI;  
     public GameObject[] ObjectsToDeactivateI;
+    public Material[] paintcolours;
+    public Material paintToAssign;
+    public MeshRenderer brush;
     private bool R;
     private bool I;
 
@@ -23,6 +26,8 @@ public class RoomTimer : MonoBehaviour
 
     public IEnumerator ChangeRooms()
     {
+        paintToAssign = paintcolours[Random.Range(0, 5)];
+        brush.material = paintToAssign;
         int TimeBeforeActivate = Random.Range(2, 8);
         Debug.Log(TimeBeforeActivate);
         if(R == true)
