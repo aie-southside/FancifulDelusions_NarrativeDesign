@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomTimer : MonoBehaviour
 {
-    public int TimeBeforeActivate;
+    //public float TimeBeforeActivate;
     public GameObject[] ObjectsToActivateR;  
     public GameObject[] ObjectsToDeactivateR;  
     public GameObject[] ObjectsToActivateI;  
@@ -23,6 +23,8 @@ public class RoomTimer : MonoBehaviour
 
     public IEnumerator ChangeRooms()
     {
+        int TimeBeforeActivate = Random.Range(2, 8);
+        Debug.Log(TimeBeforeActivate);
         if(R == true)
         {
 
