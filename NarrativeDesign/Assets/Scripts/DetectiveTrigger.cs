@@ -6,13 +6,11 @@ public class DetectiveTrigger : MonoBehaviour
 {
     public string wordToComplete;
 
-    private List<char> ongoingList;
+    public List<char> ongoingList;
     public string wordCheck;
 
-    private int lettersInWord;
-    private int lettersComplete;
 
-    private LetterBlocks[] letters;
+    public LetterBlocks[] letters;
 
     public Transform[] positions;
     
@@ -21,7 +19,7 @@ public class DetectiveTrigger : MonoBehaviour
 
     void Start()
     {
-        lettersInWord = wordToComplete.Length;
+        
     }
 
     
@@ -29,16 +27,11 @@ public class DetectiveTrigger : MonoBehaviour
     void Update()
     {
 
-        if(lettersInWord == lettersComplete)
+        if(ongoingList.Count == wordToComplete.Length)
         {
             WordCheck();
         
         }
-    }
-
-    public void LetterComplete()
-    {
-        lettersComplete += 1;
     }
 
     public void WordCheck()
@@ -79,6 +72,7 @@ public class DetectiveTrigger : MonoBehaviour
     {
         if (other.tag == "Block")
         {
+            Debug.Log("triggered");
             //eventually make it so first block goes to first position in list etc.
             ongoingList.Add(other.GetComponent<LetterBlocks>().blockLetter);
             //set position of block
