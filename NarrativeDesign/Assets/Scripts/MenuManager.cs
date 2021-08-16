@@ -12,17 +12,30 @@ public class MenuManager : MonoBehaviour
     public string mainMenu;
     public GameObject player;
 
+    //public Texture2D cursorTexture;
+    //public CursorMode cursorMode = CursorMode.Auto;
+    //public Vector2 hotSpot = Vector2.zero;
+
+    //void SetCursorTexture()
+    //{
+    //    Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    //}
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             journalScreen.SetActive(true);
-            //Cursor.lockState = CursorLockMode.None;
-            //player.SetActive(false);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //SetCursorTexture();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             miniMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //SetCursorTexture();
         }
     }
 
@@ -43,4 +56,11 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void ResumeGame()
+    {
+        miniMenu.SetActive(false);
+        //how to lock cursor after this
+    }
+
 }

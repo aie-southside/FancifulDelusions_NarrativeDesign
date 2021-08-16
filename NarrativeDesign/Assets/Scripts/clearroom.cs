@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class clearroom : MonoBehaviour
 {
-    private bool sink, sauce, toilet, bath, soap, crayons;
+    private bool sink, sauce, toilet, bath, soap, crayons, cry;
     public UnityEvent OnBathroomClear;
 
     void Start()
@@ -16,7 +16,7 @@ public class clearroom : MonoBehaviour
    
     void Update()
     {
-        if (sink == true && sauce == true && bath == true && crayons == true && toilet == true && soap == true)
+        if (sink == true && sauce == true && bath == true && crayons == true && toilet == true && soap == true && cry == true)
         {
             OnBathroomClear.Invoke();
         }
@@ -45,5 +45,9 @@ public class clearroom : MonoBehaviour
     public void Soap()
     {
         soap = true;
+    } 
+    public void Cry()
+    {
+        cry = true;
     }
 }

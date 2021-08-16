@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DetectiveTrigger : MonoBehaviour
 {
@@ -13,16 +14,18 @@ public class DetectiveTrigger : MonoBehaviour
     public LetterBlocks[] letters;
 
     public Transform[] positions;
-    
 
+    public UnityEvent OnCorrect;
 
 
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
     }
 
-    
+
 
     void Update()
     {
@@ -44,11 +47,13 @@ public class DetectiveTrigger : MonoBehaviour
         }
         if (wordCheck == wordToComplete)
         {
-            //edit gameworld textbox
+           
             foreach (LetterBlocks blocks in letters)
             {
                 blocks.ResetBlocks();
             }
+
+            OnCorrect.Invoke();
 
         }
         else
