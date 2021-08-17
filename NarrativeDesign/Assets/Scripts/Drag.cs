@@ -4,30 +4,24 @@ using UnityEngine;
 
 public class Drag : MonoBehaviour
 {
-    private Vector3 screenPoint;
     private Vector3 offset;
-
-    private void OnMouseDrag()
-    {
-        Vector3 cursorScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorScreenPoint) + offset;
-        transform.position = cursorPosition;
-    }
+    private float zCoord;
 
     private void OnMouseDown()
     {
-
-        screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+        zCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+        offset = gameObject.transform.position - GetMouseWorldPos();
     }
-        //void OnMouseDrag()
-    //{
-    //    float distance_to_screen = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-    //    transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance_to_screen));
 
-    //}
+    private Vector3 GetMouseWorldPos()
+    {
+        Vector3 mousePoint = Input.mousePosition;
+        mousePoint.z = zCoord;
+        return Camera.main.ScreenToWorldPoint(mousePoint);
+    }
 
-
-
-
+    private void OnMouseDrag()
+    {
+        transform.position = GetMouseWorldPos() + offset;
+    }
 }

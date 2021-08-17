@@ -20,8 +20,8 @@ public class DetectiveTrigger : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
 
     }
 
@@ -30,7 +30,7 @@ public class DetectiveTrigger : MonoBehaviour
     void Update()
     {
 
-        if(ongoingList.Count == wordToComplete.Length)
+        if (ongoingList.Count == wordToComplete.Length)
         {
             WordCheck();
         
@@ -48,16 +48,17 @@ public class DetectiveTrigger : MonoBehaviour
         if (wordCheck == wordToComplete)
         {
            
-            foreach (LetterBlocks blocks in letters)
-            {
-                blocks.ResetBlocks();
-            }
+            //foreach (LetterBlocks blocks in letters)
+            //{
+            //    blocks.ResetBlocks();
+            //}
 
             OnCorrect.Invoke();
 
         }
-        else
+        if (wordCheck != wordToComplete)
         {
+            Debug.Log("INCORRECT");
             RestartAttempt();
         }
         
@@ -68,20 +69,25 @@ public class DetectiveTrigger : MonoBehaviour
     private void RestartAttempt()
     {
         ongoingList.Clear();
-        foreach (LetterBlocks blocks in letters)
-        {
-            blocks.ResetBlocks();
-        }
+        wordCheck = string.Empty;
+        //foreach (LetterBlocks blocks in letters)
+        //{
+        //    blocks.ResetBlocks();
+        //}
     }
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.tag == "Block")
+    //    {
+    //        Debug.Log("triggered");
+    //        
+    //        ongoingList.Add(other.GetComponent<LetterBlocks>().blockLetter);
+      
+    //    }
+    //}
+    public void AddToList(GameObject block)
     {
-        if (other.tag == "Block")
-        {
-            Debug.Log("triggered");
-            //eventually make it so first block goes to first position in list etc.
-            ongoingList.Add(other.GetComponent<LetterBlocks>().blockLetter);
-            //set position of block
-            
-        }
+        ongoingList.Add(block.GetComponent<LetterBlocks>().blockLetter);
     }
+   
 }

@@ -6,6 +6,8 @@ public class LetterBlocks : MonoBehaviour
 {
     public char blockLetter;
     private Vector3 startingPosition;
+    public GameObject DT;
+    
 
     void Start()
     {
@@ -16,5 +18,14 @@ public class LetterBlocks : MonoBehaviour
     {
         transform.position = startingPosition;
     }
+
+    void OnMouseDown()
+    {
+        DT.GetComponent<DetectiveTrigger>().AddToList(gameObject);
+        
+        
+      
+    }
+
 
 }
