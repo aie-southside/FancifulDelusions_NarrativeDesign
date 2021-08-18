@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     public GameObject journalScreen;
     public GameObject miniMenu;
     public GameObject howToPlay;
-    public string mainMenu;
+    public string mainMenu, startScene;
     public GameObject player;
 
     //public Texture2D cursorTexture;
@@ -29,16 +29,17 @@ public class MenuManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             //SetCursorTexture();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            miniMenu.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            //SetCursorTexture();
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                miniMenu.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                //SetCursorTexture();
+            }
         }
     }
-
+    
     public void HowToPlayMenu()
     {
         howToPlay.SetActive(true);
@@ -50,6 +51,11 @@ public class MenuManager : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene(mainMenu);
+    }
+
+    public void StartScene()
+    {
+        SceneManager.LoadScene(startScene);
     }
 
     public void RestartScene()

@@ -6,7 +6,9 @@ using UnityEngine.Events;
 public class clearroom : MonoBehaviour
 {
     private bool sink, sauce, toilet, bath, soap, crayons, cry;
-    public UnityEvent OnBathroomClear;
+    public UnityEvent OnBathroomClear, OnSpyClear;
+
+    private bool blanket, lamp, blood, food;
 
     void Start()
     {
@@ -19,6 +21,11 @@ public class clearroom : MonoBehaviour
         if (sink == true && sauce == true && bath == true && crayons == true && toilet == true && soap == true && cry == true)
         {
             OnBathroomClear.Invoke();
+        }
+        if (blanket == true && lamp == true && food == true && blood == true)
+        {
+            OnSpyClear.Invoke();
+            Debug.Log("found all the clues");
         }
     }
 
@@ -50,4 +57,27 @@ public class clearroom : MonoBehaviour
     {
         cry = true;
     }
+
+
+    public void Blanket()
+    {
+        blanket = true;
+
+    } 
+    public void Lamp()
+    {
+        blanket = true;
+
+    } 
+    public void Blood()
+    {
+        blanket = true;
+
+    } 
+    public void Food()
+    {
+        blanket = true;
+
+    }
+
 }
