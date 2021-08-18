@@ -17,6 +17,12 @@ public class DetectiveTrigger : MonoBehaviour
 
     public UnityEvent OnCorrect;
 
+    //public Material MaterialToAssignRed;
+    //public MeshRenderer[] blocks;
+
+    //public Material[] original;
+
+    public GameObject redLight;
 
     void Start()
     {
@@ -59,21 +65,32 @@ public class DetectiveTrigger : MonoBehaviour
         if (wordCheck != wordToComplete)
         {
             Debug.Log("INCORRECT");
+            //foreach (MeshRenderer mesh in blocks)
+            //{
+            //    mesh.material = MaterialToAssignRed;
+            //}
+            //need to turn blocks back to usual after 1 second 
+            redLight.SetActive(true);
+            StartCoroutine(RedLight());
             RestartAttempt();
         }
         
    
     }
-
-
+    
+    private IEnumerator RedLight()
+    {
+        yield return new WaitForSeconds(1);
+        redLight.SetActive(false);
+    }
     private void RestartAttempt()
     {
         ongoingList.Clear();
         wordCheck = string.Empty;
-        //foreach (LetterBlocks blocks in letters)
-        //{
-        //    blocks.ResetBlocks();
-        //}
+        foreach (LetterBlocks blocks in letters)
+        {
+            blocks.ResetBlocks();
+        }
     }
     //private void OnTriggerEnter(Collider other)
     //{

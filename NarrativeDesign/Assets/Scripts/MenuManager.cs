@@ -30,14 +30,17 @@ public class MenuManager : MonoBehaviour
             Cursor.visible = true;
             //SetCursorTexture();
 
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                miniMenu.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                //SetCursorTexture();
-            }
+            
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            miniMenu.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            //SetCursorTexture();
+        }
+
+
     }
     
     public void HowToPlayMenu()
