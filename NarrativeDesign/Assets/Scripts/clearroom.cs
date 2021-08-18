@@ -10,6 +10,8 @@ public class clearroom : MonoBehaviour
 
     private bool blanket, lamp, blood, food;
 
+    private bool hasRunSpy;
+
     void Start()
     {
         
@@ -22,10 +24,11 @@ public class clearroom : MonoBehaviour
         {
             OnBathroomClear.Invoke();
         }
-        if (blanket == true && lamp == true && food == true && blood == true)
+        if (blanket == true && lamp == true && food == true && blood == true && hasRunSpy == false)
         {
             OnSpyClear.Invoke();
             Debug.Log("found all the clues");
+            hasRunSpy = true;
         }
     }
 
@@ -63,20 +66,21 @@ public class clearroom : MonoBehaviour
     {
         blanket = true;
 
+
     } 
     public void Lamp()
     {
-        blanket = true;
+        lamp = true;
 
     } 
     public void Blood()
     {
-        blanket = true;
+        blood = true;
 
     } 
     public void Food()
     {
-        blanket = true;
+        food = true;
 
     }
 

@@ -26,11 +26,11 @@ public class MenuManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             journalScreen.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            Debug.Log("E pressed");
+            //Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
             //SetCursorTexture();
-
-            
+ 
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
