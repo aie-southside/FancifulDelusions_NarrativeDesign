@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class DetectiveTrigger : MonoBehaviour
 {
@@ -17,12 +18,12 @@ public class DetectiveTrigger : MonoBehaviour
 
     public UnityEvent OnCorrect;
 
-    //public Material MaterialToAssignRed;
-    //public MeshRenderer[] blocks;
-
-    //public Material[] original;
-
     public GameObject redLight;
+
+    public TMP_Text counter;
+
+    private string counterString;
+    
 
     void Start()
     {
@@ -35,7 +36,7 @@ public class DetectiveTrigger : MonoBehaviour
 
     void Update()
     {
-
+        
         if (ongoingList.Count == wordToComplete.Length)
         {
             WordCheck();
@@ -51,6 +52,7 @@ public class DetectiveTrigger : MonoBehaviour
         {
             wordCheck += character;
         }
+        Debug.Log(wordCheck);
         if (wordCheck == wordToComplete)
         {
            
@@ -65,11 +67,7 @@ public class DetectiveTrigger : MonoBehaviour
         if (wordCheck != wordToComplete)
         {
             Debug.Log("INCORRECT");
-            //foreach (MeshRenderer mesh in blocks)
-            //{
-            //    mesh.material = MaterialToAssignRed;
-            //}
-            //need to turn blocks back to usual after 1 second 
+      
             redLight.SetActive(true);
             StartCoroutine(RedLight());
             RestartAttempt();
@@ -105,6 +103,20 @@ public class DetectiveTrigger : MonoBehaviour
     public void AddToList(GameObject block)
     {
         ongoingList.Add(block.GetComponent<LetterBlocks>().blockLetter);
+        editCounter();
     }
    
+
+    public void editCounter()
+    {
+        counterString = "";
+        foreach (char letter in ongoingList)
+        {
+            counterString += letter;
+
+        }
+        counter.text = counterString;
+
+
+    }
 }
