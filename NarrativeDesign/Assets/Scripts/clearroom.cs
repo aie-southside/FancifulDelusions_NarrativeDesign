@@ -5,17 +5,13 @@ using UnityEngine.Events;
 
 public class clearroom : MonoBehaviour
 {
-    private bool sink, sauce, toilet, bath, soap, crayons, cry;
-    public UnityEvent OnBathroomClear, OnSpyClear;
+    private bool sink, sauce, toilet, bath, soap, crayons, cry, spaghetti;
+    public UnityEvent OnBathroomClear, OnSpyClear, OnKitchenClear;
 
     private bool blanket, lamp, blood, food;
 
-    private bool hasRunSpy;
+    private bool hasRunSpy, hasRunKitchen;
 
-    void Start()
-    {
-        
-    }
 
    
     void Update()
@@ -29,6 +25,11 @@ public class clearroom : MonoBehaviour
             OnSpyClear.Invoke();
             Debug.Log("found all the clues");
             hasRunSpy = true;
+        }
+        if (spaghetti == true && hasRunKitchen == false)
+        {
+            OnKitchenClear.Invoke();
+            hasRunKitchen = true;
         }
     }
 
@@ -82,6 +83,11 @@ public class clearroom : MonoBehaviour
     {
         food = true;
 
+    }
+
+    public void Spaghetti()
+    {
+        spaghetti = true;
     }
 
 }
