@@ -26,7 +26,6 @@ public class LetterBlocks : MonoBehaviour
     {
         DT.GetComponent<DetectiveTrigger>().AddToList(gameObject);
 
-
         ChangeBlockColour();
     }
 
