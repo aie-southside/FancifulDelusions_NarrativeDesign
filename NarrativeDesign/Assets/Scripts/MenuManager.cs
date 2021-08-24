@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
     public GameObject journalScreen;
     public GameObject miniMenu;
     public GameObject howToPlay;
-    public string mainMenu, startScene;
+    public string mainMenu, startScene, getHelp, escape;
     public GameObject player;
 
     //public Texture2D cursorTexture;
@@ -55,7 +55,14 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(mainMenu);
     }
-
+    public void GetHelp()
+    {
+        SceneManager.LoadScene(getHelp);
+    } 
+    public void Escape()
+    {
+        SceneManager.LoadScene(escape);
+    }
     public void StartScene()
     {
         SceneManager.LoadScene(startScene);
