@@ -9,19 +9,21 @@ public class getadopted : MonoBehaviour
    
     public GameObject player;
     public GameObject parent;
-    public int currentHealthPlayer;
-    public int currentHealthParent;
+    public int currentHealthPlayer, maxPlayerHealth = 20;
+    public int currentHealthParent, maxParentHealth = 20;
+
 
     public GameObject winScreen;
     public GameObject loseScreen;
 
     public bool phaseOne, phaseTwo;
     public GameObject[] playerMoves;
-    public 
+    public TextMeshProUGUI dialogue;
 
     void Start()
     {
-        
+        maxParentHealth = currentHealthParent;
+        maxPlayerHealth = currentHealthPlayer;
     }
 
   
@@ -66,15 +68,21 @@ public class getadopted : MonoBehaviour
         currentHealthPlayer -= 1;
         //need to incorperate health bars still
     }
+    public void PlayerHeal()
+    {
+        currentHealthPlayer += 1;
+        //health bar
+    }
 
     public void PhaseOne()
     {
-        //pick a set of 
+        //pick a move from list to display as a button
+
     }
 
     public void PhaseTwo()
     {
-        
+        //pick parent move from list
     }
 
 
@@ -83,42 +91,59 @@ public class getadopted : MonoBehaviour
 
     public void Cry()
     {
-        //what the move does anddd what parent move is associated with it 
+        dialogue.text = "";
+
+        phaseOne = false;
+        phaseTwo = true;
     }
 
     public void Beg()
     {
-
+        dialogue.text = "";
+        phaseOne = false;
+        phaseTwo = true;
     }
 
     public void PraiseGod()
     {
-        
+        dialogue.text = "";
+        phaseOne = false;
+        phaseTwo = true;
     }
 
     public void Threaten()
     {
-
+        dialogue.text = "";
+        phaseOne = false;
+        phaseTwo = true;
     }
 
     public void PityParty()
     {
-
+        dialogue.text = "";
+        phaseOne = false;
+        phaseTwo = true;
     }
 
     public void RatShapeshift()
     {
-
+        dialogue.text = "";
+        phaseOne = false;
+        phaseTwo = true;
     }
 
     public void Murder()
     {
-
+        dialogue.text = "";
+        phaseOne = false;
+        phaseTwo = true;
     }
 
     public void FurSuit()
     {
-
+        dialogue.text = "";
+        phaseOne = false;
+        phaseTwo = true;
     }
 
 
@@ -126,22 +151,30 @@ public class getadopted : MonoBehaviour
 
     public void Rejection()
     {
-
+        dialogue.text = "";
+        phaseOne = true;
+        phaseTwo = false;
     }
 
     public void Shame()
     {
-
+        dialogue.text = "";
+        phaseOne = true;
+        phaseTwo = false;
     }
 
     public void Complain()
     {
-
+        dialogue.text = "";
+        phaseOne = true;
+        phaseTwo = false;
     }
 
     public void Insult()
     {
-
+        dialogue.text = "";
+        phaseOne = true;
+        phaseTwo = false;
     }
 
 
