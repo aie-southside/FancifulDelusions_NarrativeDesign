@@ -12,13 +12,21 @@ public class getadopted : MonoBehaviour
     public int currentHealthPlayer, maxPlayerHealth = 20;
     public int currentHealthParent, maxParentHealth = 20;
 
+    public int playerDamage;
+    public int parentDamage;
+
 
     public GameObject winScreen;
     public GameObject loseScreen;
 
-    public bool phaseOne, phaseTwo;
+    private bool phaseOne, phaseTwo;
     public GameObject[] playerMoves;
+
+    private int selectedMove;
+    private int selectedParentMove;
+
     public TextMeshProUGUI dialogue;
+
 
     void Start()
     {
@@ -32,14 +40,14 @@ public class getadopted : MonoBehaviour
         PlayerHealthCheck();
         ParentHealthCheck();
         
-        if (phaseOne == true && phaseTwo == false)
+        if (phaseOne == true /*&& phaseTwo == false*/)
         {
             PhaseOne();
         }
-        if (phaseTwo == true && phaseOne == false)
-        {
-            PhaseTwo();
-        }
+        //if (phaseTwo == true && phaseOne == false)
+        //{
+        //    PhaseTwo();
+        //}
 
     }
 
@@ -60,12 +68,12 @@ public class getadopted : MonoBehaviour
 
     public void ParentTakeDamage()
     {
-        currentHealthParent -= 1;
+        currentHealthParent -= playerDamage;
     }
 
     public void PlayerTakeDamage()
     {
-        currentHealthPlayer -= 1;
+        currentHealthPlayer -= parentDamage;
         //need to incorperate health bars still
     }
     public void PlayerHeal()
@@ -76,74 +84,130 @@ public class getadopted : MonoBehaviour
 
     public void PhaseOne()
     {
-        //pick a move from list to display as a button
+        foreach(GameObject move in playerMoves)
+        {
+            move.SetActive(false);
+        }
+        selectedMove = Random.Range(0, playerMoves.Length);
+        playerMoves[selectedMove].SetActive(true);
 
     }
 
     public void PhaseTwo()
     {
-        //pick parent move from list
+        SelectParentMove();
+        
     }
 
+    public void SelectParentMove()
+    {
+        selectedParentMove = Random.Range(1, 5);
 
+        if(selectedParentMove == 1)
+        {
+            Insult();
+        }
+        if(selectedParentMove == 2)
+        {
+            Compliment();
+        }
+        if(selectedParentMove == 3)
+        {
+            Shame();
+        }
+        if(selectedParentMove == 4)
+        {
+            Rejection();
+        }
 
+    }
 
 
     public void Cry()
     {
-        dialogue.text = "";
-
+        dialogue.text = "Charlie uses cry";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
     }
 
     public void Beg()
     {
-        dialogue.text = "";
+        dialogue.text = "Charlie uses beg";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
+
     }
 
     public void PraiseGod()
     {
-        dialogue.text = "";
+        dialogue.text = "Charlie uses preach";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
+
     }
 
     public void Threaten()
     {
-        dialogue.text = "";
+        dialogue.text = "Charlie uses threaten";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
+
     }
 
     public void PityParty()
     {
-        dialogue.text = "";
+        dialogue.text = "Charlie uses Pity Party";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
+
     }
 
     public void RatShapeshift()
     {
-        dialogue.text = "";
+        dialogue.text = "Charlie uses Rat shapeshifting";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
+
     }
 
     public void Murder()
     {
-        dialogue.text = "";
+        dialogue.text = "Charlie uses murder";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
+
     }
 
     public void FurSuit()
     {
-        dialogue.text = "";
+        dialogue.text = "Charlie uses fursuit";
+        playerDamage = Random.Range(0, 5);
+        Debug.Log(playerDamage);
+        ParentTakeDamage();
         phaseOne = false;
-        phaseTwo = true;
+        PhaseTwo();
+
     }
 
 
@@ -151,30 +215,46 @@ public class getadopted : MonoBehaviour
 
     public void Rejection()
     {
-        dialogue.text = "";
+        dialogue.text = "The parents use rejection";
+        parentDamage = Random.Range(0, 5);
+        Debug.Log(parentDamage);
+        PlayerTakeDamage();
         phaseOne = true;
-        phaseTwo = false;
+        
+
     }
 
     public void Shame()
     {
-        dialogue.text = "";
+        dialogue.text = "The parents use shame";
+        parentDamage = Random.Range(0, 5);
+        Debug.Log(parentDamage);
+        PlayerTakeDamage();
         phaseOne = true;
-        phaseTwo = false;
+        
+
     }
 
-    public void Complain()
+    public void Compliment()
     {
-        dialogue.text = "";
+        dialogue.text = "The parents use compliment";
+        parentDamage = Random.Range(0, 5);
+        Debug.Log(parentDamage);
+        PlayerTakeDamage();
         phaseOne = true;
-        phaseTwo = false;
+        
+
     }
 
     public void Insult()
     {
-        dialogue.text = "";
+         dialogue.text = "The parents use insult";
+        parentDamage = Random.Range(0, 5);
+        Debug.Log(parentDamage);
+        PlayerTakeDamage();
         phaseOne = true;
-        phaseTwo = false;
+        
+       
     }
 
 
